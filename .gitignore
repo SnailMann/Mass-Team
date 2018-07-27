@@ -2,10 +2,14 @@ target/
 .idea/
 .git/
 .svn/
+.settings/
 src/main/webapp/WEB-INF/classes/
 *.iml
 *.ipr
 *.iws
+*.classpath
+*.project
+*.org.eclipse.core.resources.prefs
 pom.xml.tag
 pom.xml.releaseBackup
 pom.xml.versionsBackup
