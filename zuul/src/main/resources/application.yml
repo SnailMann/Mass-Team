@@ -9,18 +9,9 @@ server:
 
 zuul:
   routes:
-    api-payment:
-      path: /api-payment/*
-      serviceId: payment
-    api-usermanagement:
-      path: /api-usermanagement/*
-      serviceId: user-management
-    api-ribbon:
-       path: /api-ribbon/*
-       serviceId: ribbon
-    api-a:
-      path: /api-b/*
-      serviceId: booking
+    payment: /api-payment/**
+    user-management: /api-usermanagement/**
+    ribbon: /api-ribbon/**
 
 # routes to url
 eureka:
