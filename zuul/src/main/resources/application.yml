@@ -1,0 +1,32 @@
+spring:
+  application:
+    name: zuul
+server:
+  port: 7071
+
+# routes to serviceId
+
+
+zuul:
+  routes:
+    api-payment:
+      path: /api-payment/*
+      serviceId: payment
+    api-usermanagement:
+      path: /api-usermanagement/*
+      serviceId: user-management
+    api-ribbon:
+       path: /api-ribbon/*
+       serviceId: ribbon
+    api-a:
+      path: /api-b/*
+      serviceId: booking
+
+# routes to url
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://localhost:7070/eureka/
+
+
+

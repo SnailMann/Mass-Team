@@ -1,0 +1,16 @@
+
+spring:
+  application:
+    name: ribbon
+
+server:
+  port: 7072
+
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://localhost:7070/eureka/
+
+server-B:
+  ribbon:
+    NFLoadBalancerRuleClassName: com.netflix.loadbalancer.RoundRobinRule

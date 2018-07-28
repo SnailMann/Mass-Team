@@ -1,0 +1,12 @@
+spring:
+  application:
+    name: user-management
+server:
+  port: 8083
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://localhost:7070/eureka/
+
+
+
