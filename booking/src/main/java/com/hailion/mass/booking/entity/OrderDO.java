@@ -4,12 +4,12 @@ import java.math.BigDecimal;
 import java.time.LocalDateTime;
 import java.util.Objects;
 
-public class Order {
+public class OrderDO {
 
     String orderId;
     String userId;
     LocalDateTime startTime;
-    LocalDateTime endTime;
+    LocalDateTime createTime;
     LocalDateTime expectTime;
     Integer orderStatus;
     Integer orderType;
@@ -18,13 +18,13 @@ public class Order {
     Integer scheme;
     BigDecimal totalPrice;
 
-    public Order() { }
+    public OrderDO() { }
 
-    public Order(String orderId, String userId, LocalDateTime startTime, LocalDateTime endTime, LocalDateTime expectTime, Integer orderStatus, Integer orderType, Integer weight, Integer quantity, Integer scheme, BigDecimal totalPrice) {
+    public OrderDO(String orderId, String userId, LocalDateTime startTime, LocalDateTime createTime, LocalDateTime expectTime, Integer orderStatus, Integer orderType, Integer weight, Integer quantity, Integer scheme, BigDecimal totalPrice) {
         this.orderId = orderId;
         this.userId = userId;
         this.startTime = startTime;
-        this.endTime = endTime;
+        this.createTime = createTime;
         this.expectTime = expectTime;
         this.orderStatus = orderStatus;
         this.orderType = orderType;
@@ -60,12 +60,12 @@ public class Order {
         this.startTime = startTime;
     }
 
-    public LocalDateTime getEndTime() {
-        return endTime;
+    public LocalDateTime getCreateTime() {
+        return createTime;
     }
 
-    public void setEndTime(LocalDateTime endTime) {
-        this.endTime = endTime;
+    public void setCreateTime(LocalDateTime createTime) {
+        this.createTime = createTime;
     }
 
     public LocalDateTime getExpectTime() {
@@ -128,11 +128,11 @@ public class Order {
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-        Order order = (Order) o;
+        OrderDO order = (OrderDO) o;
         return Objects.equals(orderId, order.orderId) &&
                 Objects.equals(userId, order.userId) &&
                 Objects.equals(startTime, order.startTime) &&
-                Objects.equals(endTime, order.endTime) &&
+                Objects.equals(createTime, order.createTime) &&
                 Objects.equals(expectTime, order.expectTime) &&
                 Objects.equals(orderStatus, order.orderStatus) &&
                 Objects.equals(orderType, order.orderType) &&
@@ -144,7 +144,7 @@ public class Order {
 
     @Override
     public int hashCode() {
-        return Objects.hash(orderId, userId, startTime, endTime, expectTime, orderStatus, orderType, weight, quantity, scheme, totalPrice);
+        return Objects.hash(orderId, userId, startTime, createTime, expectTime, orderStatus, orderType, weight, quantity, scheme, totalPrice);
     }
 
     @Override
@@ -153,7 +153,7 @@ public class Order {
                 "orderId='" + orderId + '\'' +
                 ", userId='" + userId + '\'' +
                 ", startTime=" + startTime +
-                ", endTime=" + endTime +
+                ", createTime=" + createTime +
                 ", expectTime=" + expectTime +
                 ", orderStatus=" + orderStatus +
                 ", orderType=" + orderType +

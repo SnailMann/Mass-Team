@@ -5,11 +5,12 @@
 <mapper namespace="com.hailion.mass.booking.dao.OrderMapper">
 
 
-    <insert id="insertOrder" parameterType="com.hailion.mass.booking.entity.Order" >
+    <insert id="insertOrder" parameterType="com.hailion.mass.booking.entity.OrderDO" >
         INSERT INTO m_order (
           id ,
+          user_id,
           start_time ,
-          end_time ,
+          create_time ,
           expect_time ,
           order_status ,
           order_type ,
@@ -17,11 +18,42 @@
           quantity ,
           scheme ,
           total_price )
-        VALUES (#{orderId},#{startTime},#{endTime},#{expectTime},#{orderStatus},#{orderType},#{weight},#{quantity},#{scheme},#{totalPrice});
+        VALUES (#{orderId},#{userId},#{startTime},#{createTime},#{expectTime},#{orderStatus},#{orderType},#{weight},#{quantity},#{scheme},#{totalPrice});
     </insert>
 
     <delete id="deleteOrderById" parameterType="java.lang.String">
         DELETE FROM m_order  WHERE id = #{orderId};
     </delete>
 
+    <select id="getOrder" parameterType="java.lang.String" resultType="com.hailion.mass.booking.entity.OrderDO">
+        SELECT
+            id AS orderId,
+            user_id AS userId,
+            start_time AS startTime,
+            create_time AS createTime,
+            expect_time AS expectTime,
+            order_status AS orderStatus,
+            order_type AS orderType,
+            weight AS weight,
+            quantity AS quantity,
+            scheme AS scheme,
+            total_price AS totalPrice
+        FROM m_order WHERE id = #{orderId};
+    </select>
+
+    <select id="listOrder" resultType="com.hailion.mass.booking.entity.OrderDO">
+        SELECT
+            id AS orderId,
+            user_id AS userId,
+            start_time AS startTime,
+            create_time AS createTime,
+            expect_time AS expectTime,
+            order_status AS orderStatus,
+            order_type AS orderType,
+            weight AS weight,
+            quantity AS quantity,
+            scheme AS scheme,
+            total_price AS totalPrice
+        FROM m_order ORDER BY create_time DESC;
+    </select>
 </mapper>

@@ -2,12 +2,12 @@ package com.hailion.mass.booking.controller;
 
 
 import com.hailion.mass.booking.Service.OrderService;
-import com.hailion.mass.booking.entity.Order;
+import com.hailion.mass.booking.entity.OrderDO;
 import org.apache.log4j.Logger;
-import org.apache.tomcat.jni.Local;
 import org.springframework.cloud.client.discovery.DiscoveryClient;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cloud.client.ServiceInstance;
+import org.springframework.core.annotation.Order;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RestController;
@@ -15,6 +15,7 @@ import org.springframework.web.client.RestTemplate;
 
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
+import java.util.List;
 
 
 @RestController
@@ -38,13 +39,14 @@ public class TestController {
     @GetMapping("/booking/order")
     public String placeAnOrder() {
         ServiceInstance instance = client.getLocalServiceInstance();
-        Order order = new Order();
+        OrderDO order = new OrderDO();
         order.setOrderId("20180730");
         order.setUserId("1001");
         order.setStartTime(LocalDateTime.now());
-        order.setEndTime(LocalDateTime.now().plusHours(2));
+        order.setCreateTime(LocalDateTime.now().plusHours(2));
         order.setExpectTime(LocalDateTime.now().plusHours(2));
         order.setOrderStatus(1);
+        order.setOrderType(1);
         order.setOrderStatus(1);
         order.setScheme(1);
         order.setWeight(90);
@@ -52,15 +54,26 @@ public class TestController {
         order.setTotalPrice(BigDecimal.valueOf(90));
 
 
-        orderService.insertAnOrder(order);
+        orderService.insertOrder(order);
         return "Booking : place an order now " + "\nPort: " + instance.getPort();
     }
 
     @GetMapping("/booking/delete/{orderId}")
     public String deleteAnOrder(@PathVariable String orderId){
-        orderService.deleteAnOrderById(orderId);
+        orderService.deleteOrderById(orderId);
         return "delete order of " + orderId;
     }
 
+    @GetMapping("/booking/get/{orderId}")
+    public OrderDO getOrderDO(@PathVariable String orderId){
+        OrderDO orderDO = orderService.getOrderDOById(orderId);
+        return orderDO;
+    }
+
+    @GetMapping("/booking/list")
+    public List<OrderDO> listOrderDO(){
+        List<OrderDO> orderDOList = orderService.listOrderDO();
+        return orderDOList;
+    }
 
 }

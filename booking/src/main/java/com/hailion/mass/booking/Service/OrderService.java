@@ -1,15 +1,16 @@
 package com.hailion.mass.booking.Service;
 
 
-import com.hailion.mass.booking.dao.OrderMapper;
-import com.hailion.mass.booking.entity.Order;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
+import com.hailion.mass.booking.entity.OrderDO;
+
+import java.util.List;
 
 
 public interface OrderService {
 
-    public void insertAnOrder(Order order);
-    public void deleteAnOrderById(String orderId);
+    public void insertOrder(OrderDO order);
+    public void deleteOrderById(String orderId);
+    public OrderDO getOrderDOById(String orderId);
+    public List<OrderDO> listOrderDO();
 
 }
