@@ -13,7 +13,6 @@
     <module>payment</module>
     <module>user-management</module>
     <module>booking</module>
-    <module>booking-backups1</module>
     <module>hystrix-ribbon</module>
     <module>feign</module>
     <module>hystrix-feign</module>

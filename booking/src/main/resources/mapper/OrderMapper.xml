@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.hailion.mass.booking.dao.OrderMapper">
+
+
+    <insert id="insertOrder" parameterType="com.hailion.mass.booking.entity.Order" >
+        INSERT INTO m_order (
+          id ,
+          start_time ,
+          end_time ,
+          expect_time ,
+          order_status ,
+          order_type ,
+          weight ,
+          quantity ,
+          scheme ,
+          total_price )
+        VALUES (#{orderId},#{startTime},#{endTime},#{expectTime},#{orderStatus},#{orderType},#{weight},#{quantity},#{scheme},#{totalPrice});
+    </insert>
+
+    <delete id="deleteOrderById" parameterType="java.lang.String">
+        DELETE FROM m_order  WHERE id = #{orderId};
+    </delete>
+
+</mapper>
