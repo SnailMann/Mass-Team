@@ -21,17 +21,17 @@ public class TestController {
     private DiscoveryClient client;
 
     @GetMapping("/booking/order/{money}")
-    public String placeAnOrder(@PathVariable("money") Integer in_money){
-        RestTemplate restTemplate=new RestTemplate();
-        return restTemplate.getForObject("http://localhost:8082//payment/pay/{in_money}", String.class,in_money);
+    public String placeAnOrder(@PathVariable("money") Integer in_money) {
+        RestTemplate restTemplate = new RestTemplate();
+        return restTemplate.getForObject("http://localhost:8082//payment/pay/{in_money}", String.class, in_money);
     }
 
 
     @GetMapping("/booking/order")
-    public String placeAnOrder(){
+    public String placeAnOrder() {
         ServiceInstance instance = client.getLocalServiceInstance();
         logger.info("/booking/test host:" + instance.getHost() + ", service_id:" + instance.getServiceId() + ", parameter:" + null);
-        return "Booking : place an order now "+ "\nPort: "+instance.getPort();
+        return "Booking : place an order now " + "\nPort: " + instance.getPort();
     }
 
 

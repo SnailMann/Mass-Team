@@ -14,19 +14,20 @@ import com.netflix.loadbalancer.RandomRule;
 @EnableDiscoveryClient
 public class RibbonApplication {
 
-	@Bean
-	@LoadBalanced
-	RestTemplate restTemplate() {
-		return new RestTemplate();
-	}
-	
+    @Bean
+    @LoadBalanced
+    RestTemplate restTemplate() {
+        return new RestTemplate();
+    }
+
+
     @Bean
     public IRule ribbonRule() {
         return new RandomRule();
-    }
+    } //采用随机策略
 
-	public static void main(String[] args) {
-		SpringApplication.run(RibbonApplication.class, args);
-	}
+    public static void main(String[] args) {
+        SpringApplication.run(RibbonApplication.class, args);
+    }
 
 }
