@@ -12,6 +12,7 @@ zuul:
     payment: /api-payment/**
     user-management: /api-usermanagement/**
     ribbon: /api-ribbon/**
+    booking: /api-booking/**
 
 # routes to url
 eureka:

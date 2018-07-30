@@ -76,4 +76,11 @@ public class TestController {
         return orderDOList;
     }
 
+    @GetMapping("/booking/test")
+    public String test(){
+        ServiceInstance instance = client.getLocalServiceInstance();
+        logger.info("/booking/test host:" + instance.getHost() + ", service_id:" + instance.getServiceId() + ", parameter:" + null);
+        return "Booking test " + "\nPort: " + instance.getPort();
+    }
+
 }
