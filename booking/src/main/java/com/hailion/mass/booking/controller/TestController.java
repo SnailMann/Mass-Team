@@ -1,9 +1,9 @@
 package com.hailion.mass.booking.controller;
 
 
+import com.hailion.mass.booking.client.PaymentClient;
 import com.hailion.mass.booking.service.OrderService;
 import com.hailion.mass.booking.entity.OrderDO;
-import com.hailion.mass.booking.service.client.PaymentClient;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.cloud.client.discovery.DiscoveryClient;

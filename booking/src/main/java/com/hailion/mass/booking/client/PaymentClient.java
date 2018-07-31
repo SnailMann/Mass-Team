@@ -1,4 +1,4 @@
-package com.hailion.mass.booking.service.client;
+package com.hailion.mass.booking.client;
 
 
 import org.springframework.cloud.netflix.feign.FeignClient;
