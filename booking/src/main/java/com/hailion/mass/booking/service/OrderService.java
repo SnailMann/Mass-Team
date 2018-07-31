@@ -1,4 +1,4 @@
-package com.hailion.mass.booking.Service;
+package com.hailion.mass.booking.service;
 
 
 import com.hailion.mass.booking.entity.OrderDO;

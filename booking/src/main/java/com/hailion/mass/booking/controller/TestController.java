@@ -1,13 +1,13 @@
 package com.hailion.mass.booking.controller;
 
 
-import com.hailion.mass.booking.Service.OrderService;
+import com.hailion.mass.booking.service.OrderService;
 import com.hailion.mass.booking.entity.OrderDO;
+import com.hailion.mass.booking.service.client.PaymentClient;
 import org.apache.log4j.Logger;
 import org.springframework.cloud.client.discovery.DiscoveryClient;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cloud.client.ServiceInstance;
-import org.springframework.core.annotation.Order;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RestController;
@@ -28,11 +28,15 @@ public class TestController {
     private DiscoveryClient client;
     @Autowired
     private OrderService orderService;
+    @Autowired
+    private PaymentClient paymentClient;
 
     @GetMapping("/booking/order/{money}")
     public String placeAnOrder(@PathVariable("money") Integer in_money) {
         RestTemplate restTemplate = new RestTemplate();
         return restTemplate.getForObject("http://localhost:8082//payment/pay/{in_money}", String.class, in_money);
+
+       /* return paymentClient.payMoney(in_money);*/
     }
 
 

@@ -1,6 +1,6 @@
-package com.hailion.mass.booking.Service.impl;
+package com.hailion.mass.booking.service.impl;
 
-import com.hailion.mass.booking.Service.OrderService;
+import com.hailion.mass.booking.service.OrderService;
 import com.hailion.mass.booking.dao.OrderMapper;
 import com.hailion.mass.booking.entity.OrderDO;
 import org.springframework.beans.factory.annotation.Autowired;
