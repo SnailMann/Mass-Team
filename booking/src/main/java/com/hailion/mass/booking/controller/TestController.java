@@ -4,7 +4,8 @@ package com.hailion.mass.booking.controller;
 import com.hailion.mass.booking.service.OrderService;
 import com.hailion.mass.booking.entity.OrderDO;
 import com.hailion.mass.booking.service.client.PaymentClient;
-import org.apache.log4j.Logger;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.cloud.client.discovery.DiscoveryClient;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cloud.client.ServiceInstance;
@@ -22,7 +23,7 @@ import java.util.List;
 public class TestController {
 
 
-    private final Logger logger = Logger.getLogger(getClass());
+    private Logger logger =  LoggerFactory.getLogger(this.getClass());
 
     @Autowired
     private DiscoveryClient client;
@@ -34,9 +35,9 @@ public class TestController {
     @GetMapping("/booking/order/{money}")
     public String placeAnOrder(@PathVariable("money") Integer in_money) {
         RestTemplate restTemplate = new RestTemplate();
-        return restTemplate.getForObject("http://localhost:8082//payment/pay/{in_money}", String.class, in_money);
+        /*return restTemplate.getForObject("http://localhost:8082//payment/pay/{in_money}", String.class, in_money);*/
 
-       /* return paymentClient.payMoney(in_money);*/
+        return paymentClient.payMoney(in_money);
     }
 
 
