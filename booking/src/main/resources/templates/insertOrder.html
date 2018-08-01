@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<!-- 引入bootstrap -->
+<link th:href="@{/asserts/css/bootstrap.css}" rel="stylesheet"/>
+<!-- 引入js -->
+<script type="text/javascript" th:src="@{/asserts/js/jquery-1.12.4.js}"></script>
+</head>
+<body style="background: #F0F4F3;">
+<div style="width: 800px; height: 700px; background: #fff; box-shadow: -2px 0 2px #ebefee, 4px 0 4px #e1e5e4, 0 -1px 1px #eef2f1, 0 5px 5px #dce0df; margin: 50px auto auto;">
+<form style="width: 500px; height: 400px; margin: 0px auto auto; padding-top: 10px;" th:action="@{/booking/order}" method="post">
+  <h1 style="text-align: center;">订单</h1>
+  <h3 style="text-align: center;">您选择的路线：福田---海梁</h3>
+  <div class="form-group">
+    <label for="exampleInputEmail1">您期望到达时间是：</label>
+    <input type="text" class="form-control" id="" placeholder="Time" name="expectTime">
+  </div>
+  
+  <div class="form-group">
+    <label for="exampleInputEmail1">货物的重量：</label>
+    <input type="text" class="form-control" id="" placeholder="weight" name="weight">
+  </div>
+  <div class="form-group">
+    <label for="exampleInputEmail1">人数：</label>
+    <input type="text" class="form-control" id="" placeholder="quantity" name="quantity">
+  </div>
+  <div class="form-group">
+    <label for="exampleInputPassword1">需要搭乘的是：</label>
+  <div class="checkbox">
+    <label>
+      <input type="radio" name="orderType" id="people" value="0"> 人
+    </label>
+    <label>
+      <input type="radio" name="orderType" id="things" value="1"> 物
+    </label>
+  </div>
+  </div>
+  <div class="form-group">
+   <label for="exampleInputEmail1">出行方案：</label>
+  <div class="checkbox">
+    <label>
+      <input type="radio" name="scheme" id="people" value="0"> 时间最少	
+    </label>
+    <label>
+      <input type="radio" name="scheme" id="things" value="1"> 步行最少
+    </label>
+    <label>
+      <input type="radio" name="scheme" id="things" value="2"> 价格最优
+    </label>
+   <label>
+      <input type="radio" name="scheme" id="things" value="3"> 换乘最少
+    </label>
+    <label>
+      <input type="radio" name="scheme" id="things" value="4">   停靠站点最少'   
+	</label>
+  </div>
+  </div>
+<div class="form-group">
+    <label for="exampleInputEmail1">总价格:￥</label>
+    <input type="text" class="form-control" id="" placeholder="quantity" name="totalPrice" value="56">
+  </div>
+  
+  <div style="clear:left;width:100%;text-align: center"><input type="submit" class="btn btn-default" value="提交订单" /></div>
+</form>
+
+</div>
+</body>
+</html>

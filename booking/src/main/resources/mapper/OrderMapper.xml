@@ -5,7 +5,7 @@
 <mapper namespace="com.hailion.mass.booking.dao.OrderMapper">
 
 
-    <insert id="insertOrder" parameterType="com.hailion.mass.booking.entity.OrderDO" >
+    <insert id="insertOrder" parameterType="Order" >
         INSERT INTO m_order (
           id ,
           user_id,
@@ -18,14 +18,14 @@
           quantity ,
           scheme ,
           total_price )
-        VALUES (#{orderId},#{userId},#{startTime},#{createTime},#{expectTime},#{orderStatus},#{orderType},#{weight},#{quantity},#{scheme},#{totalPrice});
+        VALUES (#{orderId},#{userId},now(),now(),#{expectTime},#{orderStatus},#{orderType},#{weight},#{quantity},#{scheme},#{totalPrice});
     </insert>
-
+	
     <delete id="deleteOrderById" parameterType="java.lang.String">
         DELETE FROM m_order  WHERE id = #{orderId};
     </delete>
 
-    <select id="getOrder" parameterType="java.lang.String" resultType="com.hailion.mass.booking.entity.OrderDO">
+    <select id="getOrder" parameterType="java.lang.String" resultType="Order">
         SELECT
             id AS orderId,
             user_id AS userId,
@@ -41,7 +41,7 @@
         FROM m_order WHERE id = #{orderId};
     </select>
 
-    <select id="listOrder" resultType="com.hailion.mass.booking.entity.OrderDO">
+    <select id="listOrder" resultType="Order">
         SELECT
             id AS orderId,
             user_id AS userId,
@@ -56,4 +56,17 @@
             total_price AS totalPrice
         FROM m_order ORDER BY create_time DESC;
     </select>
+    <update id="updateOrder" parameterType="Order">
+    	update m_order 
+    	<set>
+    		<if test="#{orderStatus}!=null">
+    			order_status=2,
+    		</if>
+    	</set>
+    	<where>
+    		
+    			id=#{orderId}
+    		
+    	</where>
+    </update>
 </mapper>

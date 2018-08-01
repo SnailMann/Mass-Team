@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<!-- 引入bootstrap -->
+<link th:href="@{/asserts/css/bootstrap.css}" rel="stylesheet"/>
+<!-- 引入js -->
+<script type="text/javascript" th:src="@{/asserts/js/jquery-1.12.4.js}"></script>
+</head>
+<body style="background: #F0F4F3;">
+<div style="width: 600px; height: 400px; background: #fff; box-shadow: -2px 0 2px #ebefee, 4px 0 4px #e1e5e4, 0 -1px 1px #eef2f1, 0 5px 5px #dce0df; margin: 50px auto auto;" th:each="orders:${orderList}">
+<form style="width: 500px; height: 400px; margin: 0px auto auto; padding-top: 10px;" th:action="@{/booking/cancel}" method="get" id="orderList">
+  
+  <!-- 订单隐藏域 -->
+  <input type="hidden" name="orderId" th:value="${orders.orderId}"/>
+  <p>订单：[[${orders.orderId}]]</p>
+  <p>用户：[[${orders.userId}]]</p>
+  <p>预期到达时间：[[${#dates.format(orders.expectTime,"yyyy年MM月dd日  hh时mm分ss秒")}]]</p>
+  <p>下单日期：[[${#dates.format(orders.startTime,"yyyy年MM月dd日  hh时mm分ss秒")}]]</p>
+  <p>订单创建日期：[[${#dates.format(orders.createTime,"yyyy年MM月dd日  hh时mm分ss秒")}]]</p>
+  
+  <!-- 判断状态 -->
+  <p th:if="${orders.orderStatus}==0" >订单状态：<span style="color: red;">未支付</span></p>
+  <p th:if="${orders.orderStatus}==1" >订单状态：<span style="color: green;">已支付</span></p>
+  <p th:if="${orders.orderStatus}==2" >订单状态：<span style="color: blue;">已取消</span></p>
+  
+  <!-- 判断订单类型 -->
+  <p th:if="${orders.orderType}==0" >订单类型：人</p>
+  <p th:if="${orders.orderType}==1" >订单类型：物品</p>
+  
+  <p>人/物的重量：[[${orders.weight}]]kg</p>
+  <p>数量：[[${orders.quantity}]]</p>
+  
+  <!--判断优先原则  -->
+  <p th:if="${orders.scheme}==0" >优先原则：时间最少</p>
+  <p th:if="${orders.scheme}==1" >优先原则：步行最少</p>
+  <p th:if="${orders.scheme}==2" >优先原则：价格最优</p>
+  <p th:if="${orders.scheme}==3" >优先原则：换乘最少</p>
+  <p th:if="${orders.scheme}==4" >优先原则：停靠站点最少</p>
+  <p>订单总价：[[${orders.totalPrice}]]￥</p>
+
+  <div style="clear:left;width:100%;text-align: center"><input type="submit" class="btn btn-default" value="取消订单" id="btn-cancle" /><input type="submit" class="btn btn-default" value="删除订单" id="btn-delete"/></div>
+
+</form>
+
+</div>
+<script type="text/javascript">
+$("#btn-cancle").click(function(){
+	$("#orderList").attr("action","/booking/cancel");
+	$("#orderList").submit();
+});
+$("#btn-delete").click(function(){
+	$("#orderList").attr("action","/booking/delete");
+	$("#orderList").submit();
+});
+</script>
+</body>
+</html>

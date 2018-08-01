@@ -18,7 +18,7 @@ CREATE TABLE `m_order` (
   `order_type` int(11) DEFAULT NULL COMMENT '订单种类：0：人，1：货物',
   `weight` int(11) DEFAULT NULL COMMENT '货物重量',
   `quantity` int(11) DEFAULT NULL COMMENT '人数',
-  `scheme` int(11) DEFAULT NULL COMMENT '出行方案：0：时间最少，1：路程最短，2：价格最优',
+  `scheme` int(11) DEFAULT NULL COMMENT '出行方案：0：时间最少，1：步行最少，2：价格最优，3：换乘最少，4：停靠站点最少',
   `total_price` int(11) DEFAULT NULL COMMENT '总价格',
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
