@@ -1,2 +1,2 @@
-# Mass-Team
-MassTeam Project
+# demo-springcloud
+demo-springcloud
