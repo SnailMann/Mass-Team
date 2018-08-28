@@ -1,4 +1,4 @@
-package com.hailion.mass.filter;
+package com.snailmann.zuul.filter;
 
 import com.netflix.zuul.ZuulFilter;
 import com.netflix.zuul.context.RequestContext;
