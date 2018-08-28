@@ -15,6 +15,7 @@
 		<module>payment</module>
 		<module>user-management</module>
 		<module>booking</module>
+		<module>common</module>
 
 	</modules>
 
