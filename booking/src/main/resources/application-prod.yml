@@ -1,0 +1,14 @@
+logging:
+  file: ./booking/springboot-booking.log
+  level:
+    com.haylion.maas.booking: debug
+
+
+spring:
+  application:
+    name: booking
+  rabbitmq:
+    host: localhost
+    port: 5672
+    username: guest
+    password: guest

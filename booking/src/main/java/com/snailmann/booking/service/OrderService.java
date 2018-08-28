@@ -1,11 +1,10 @@
-package com.hailion.mass.booking.service;
+package com.snailmann.booking.service;
 
-
-import com.hailion.mass.booking.entity.Order;
-import com.hailion.mass.booking.entity.OrderDO;
 
 
 import java.util.List;
+
+import com.snailmann.booking.entity.Order;
 
 
 public interface OrderService {

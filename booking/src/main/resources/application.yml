@@ -1,31 +1,19 @@
+spring:
+  profiles:
+    active: dev
+
 server:
-  port: 8081
+  port: 8111
 
 eureka:
   client:
     serviceUrl:
-      defaultZone: http://localhost:7070/eureka/
-
-logging:
-  file: ./springboot-booking.log
-  level: info
-
-spring:
-  application:
-    name: booking
-  datasource:
-    url: jdbc:mysql://localhost:3306/mass_db
-    username: root
-    password: 1234
-    driver-class-name: com.mysql.jdbc.Driver
-  #方便调试页面，应用thymeleaf模板引擎 
-  thymeleaf:
-    cache: false
+      defaultZone: http://localhost:8761/eureka/
 
 mybatis:
   type-aliases-package: com.hailion.mass.booking.entity
   mapper-locations: classpath:mapper/**/*.xml
-  config-location: classpath:mybatis-config.xml
 
-   
+
+
 

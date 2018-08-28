@@ -1,4 +1,4 @@
-package com.hailion.mass.booking.entity;
+package com.snailmann.booking.entity;
 
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
@@ -6,7 +6,7 @@ import java.util.Objects;
 
 import org.springframework.format.annotation.DateTimeFormat;
 
-public class OrderDO {
+public class Order {
 
     String orderId;
     String userId;
@@ -20,9 +20,9 @@ public class OrderDO {
     Integer scheme;
     BigDecimal totalPrice;
 
-    public OrderDO() { }
+    public Order() { }
 
-    public OrderDO(String orderId, String userId, LocalDateTime startTime, LocalDateTime createTime, LocalDateTime expectTime, Integer orderStatus, Integer orderType, Integer weight, Integer quantity, Integer scheme, BigDecimal totalPrice) {
+    public Order(String orderId, String userId, LocalDateTime startTime, LocalDateTime createTime, LocalDateTime expectTime, Integer orderStatus, Integer orderType, Integer weight, Integer quantity, Integer scheme, BigDecimal totalPrice) {
         this.orderId = orderId;
         this.userId = userId;
         this.startTime = startTime;
@@ -130,7 +130,7 @@ public class OrderDO {
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-        OrderDO order = (OrderDO) o;
+        Order order = (Order) o;
         return Objects.equals(orderId, order.orderId) &&
                 Objects.equals(userId, order.userId) &&
                 Objects.equals(startTime, order.startTime) &&

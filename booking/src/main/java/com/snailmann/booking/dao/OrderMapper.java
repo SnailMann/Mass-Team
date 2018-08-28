@@ -1,13 +1,15 @@
-package com.hailion.mass.booking.dao;
+package com.snailmann.booking.dao;
 
-import com.hailion.mass.booking.entity.Order;
-import com.hailion.mass.booking.entity.OrderDO;
-import org.apache.ibatis.annotations.Mapper;
+
+
+import com.snailmann.booking.entity.Order;
 
 import java.util.List;
 
+import org.apache.ibatis.annotations.Mapper;
 
 
+@Mapper
 public interface OrderMapper {
 
     public void insertOrder(Order orderDO);
